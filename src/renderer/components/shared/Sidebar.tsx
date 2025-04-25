@@ -49,6 +49,15 @@ function Sidebar({
             Contact Us
           </Link>
         </li>
+        <li className="mb-2">
+          <Link
+            to="/chat"
+            className={`block p-2 rounded ${location.pathname === '/chat' ? 'bg-gray-200' : ''} hover:bg-gray-300`}
+            onClick={toggleSidebar}
+          >
+            Chat{' '}
+          </Link>
+        </li>
       </ul>
     </nav>
   );

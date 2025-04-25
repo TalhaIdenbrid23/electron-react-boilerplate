@@ -4,6 +4,7 @@ import Signup from '../screens/auth/Signup';
 import Dashboard from '../screens/dashboard/Dashboard'; // Assuming you want to keep Dashboard in a separate file
 import AboutUs from '../screens/dashboard/AboutUs';
 import ContactUs from '../screens/dashboard/ConactUs';
+import Chat from '../screens/dashboard/Chat';
 
 function AppRoutes() {
   return (
@@ -13,6 +14,7 @@ function AppRoutes() {
       <Route path="/signup" element={<Signup />} />
       <Route path="/aboutUs" element={<AboutUs />} />
       <Route path="/contactUs" element={<ContactUs />} />
+      <Route path="/chat" element={<Chat />} />
     </Routes>
   );
 }
