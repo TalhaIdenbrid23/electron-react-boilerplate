@@ -1,40 +1,42 @@
-import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
-import icon from '../../assets/icon.svg';
+import { MemoryRouter as Router, useLocation } from 'react-router-dom';
+import { useState } from 'react';
 import './App.css';
+import Header from './components/shared/Header';
+import Sidebar from './components/shared/Sidebar';
+import Footer from './components/shared/Footer';
+import Breadcrumbs from './components/shared/Breadcrumbs';
+import AppRoutes from './routes/AppRoutes';
 
-function Hello() {
+const App = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const location = useLocation(); // Get the current location
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  // Check if the current path is either login or signup
+  const isAuthRoute =
+    location.pathname === '/login' || location.pathname === '/signup';
+
   return (
-    <div>
-      <div className="Hello">
-        <img width="200" alt="icon" src={icon} />
+    <div className="flex flex-col h-screen">
+      {!isAuthRoute && <Header toggleSidebar={toggleSidebar} />}
+      <div className="flex flex-grow">
+        {!isAuthRoute && <Sidebar isOpen={isSidebarOpen} />}
+        <main className="flex-grow p-4 bg-gray-100">
+          <AppRoutes />
+        </main>
       </div>
-      <h1>electron-react-boilerplate</h1>
-      <div className="Hello">
-        <a
-          href="https://electron-react-boilerplate.js.org/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button type="button">Read our</button>
-        </a>
-        <a
-          href="https://github.com/sponsors/electron-react-boilerplate"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button type="button">Donate</button>
-        </a>
-      </div>
+      {!isAuthRoute && <Footer />}
     </div>
   );
-}
+};
 
-export default function App() {
+export default function AppWrapper() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Hello />} />
-      </Routes>
+      <App />
     </Router>
   );
 }
