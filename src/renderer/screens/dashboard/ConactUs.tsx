@@ -17,7 +17,7 @@ export default function ContactUs() {
     <div className="flex bg-gray-100 w-full justify-center p-6">
       <form
         onSubmit={handleSubmit}
-        className="bg-white w-full max-w-lg p-6 rounded shadow-md"
+        className="bg-white w-full  p-6 rounded shadow-md"
       >
         <h2 className="text-2xl mb-4">Contact Us</h2>
         <div className="mb-4">

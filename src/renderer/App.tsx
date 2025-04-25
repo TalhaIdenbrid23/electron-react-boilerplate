@@ -1,13 +1,11 @@
 import { MemoryRouter as Router, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import './App.css';
-import Header from './components/shared/Header';
-import Sidebar from './components/shared/Sidebar';
-import Footer from './components/shared/Footer';
-import Breadcrumbs from './components/shared/Breadcrumbs';
 import AppRoutes from './routes/AppRoutes';
+import AuthLayout from './layout/AuthLayout';
+import DashboardLayout from './layout/DashboardLayout';
 
-const App = () => {
+function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const location = useLocation(); // Get the current location
 
@@ -20,18 +18,22 @@ const App = () => {
     location.pathname === '/login' || location.pathname === '/signup';
 
   return (
-    <div className="flex flex-col h-screen">
-      {!isAuthRoute && <Header toggleSidebar={toggleSidebar} />}
-      <div className="flex flex-grow">
-        {!isAuthRoute && <Sidebar isOpen={isSidebarOpen} />}
-        <main className="flex-grow p-4 bg-gray-100">
+    <div>
+      {isAuthRoute ? (
+        <AuthLayout>
           <AppRoutes />
-        </main>
-      </div>
-      {!isAuthRoute && <Footer />}
+        </AuthLayout>
+      ) : (
+        <DashboardLayout
+          toggleSidebar={toggleSidebar}
+          isSidebarOpen={isSidebarOpen}
+        >
+          <AppRoutes />
+        </DashboardLayout>
+      )}
     </div>
   );
-};
+}
 
 export default function AppWrapper() {
   return (
