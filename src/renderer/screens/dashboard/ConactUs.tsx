@@ -14,7 +14,7 @@ export default function ContactUs() {
   };
 
   return (
-    <div className="flex bg-gray-100 w-full justify-center p-6">
+    <div className="flex bg-white w-full justify-center p-6">
       <form
         onSubmit={handleSubmit}
         className="bg-white w-full  p-6 rounded shadow-md"

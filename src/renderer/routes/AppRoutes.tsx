@@ -5,7 +5,7 @@ import Dashboard from '../screens/dashboard/Dashboard'; // Assuming you want to 
 import AboutUs from '../screens/dashboard/AboutUs';
 import ContactUs from '../screens/dashboard/ConactUs';
 
-const AppRoutes = () => {
+function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Dashboard />} />
@@ -15,6 +15,6 @@ const AppRoutes = () => {
       <Route path="/contactUs" element={<ContactUs />} />
     </Routes>
   );
-};
+}
 
 export default AppRoutes;
