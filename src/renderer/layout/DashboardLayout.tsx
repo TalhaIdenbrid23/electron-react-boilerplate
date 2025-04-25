@@ -17,7 +17,7 @@ function DashboardLayout({
       <Header toggleSidebar={toggleSidebar} />
       <div className="flex flex-grow">
         <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-        <main className="flex-grow p-4 bg-gray-100">{children}</main>
+        <main className="flex-grow p-4 bg-gray-300">{children}</main>
       </div>
       <Footer />
     </div>
